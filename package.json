@@ -1,0 +1,41 @@
+{
+  "name": "mongoose-plugin-rsa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "watch": "$(npm bin)/babel -s -w -d lib/ src/",
+    "build": "$(npm bin)/babel -s -d lib/ src/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "^4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.carlipa.io/carlipa/online.git"
+  },
+  "author": {
+    "name": "Olivier Louvignes",
+    "email": "olivier@mg-crea.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.3.4",
+    "node-forge": "^0.6.39"
+  },
+  "optionalDependencies": {
+    "ursa": "^0.9.3"
+  },
+  "devDependencies": {
+    "babel-cli": "file:../../node_modules/babel-cli",
+    "babel-eslint": "file:../../node_modules/babel-eslint",
+    "babel-plugin-relative-import": "file:../../node_modules/babel-plugin-relative-import",
+    "babel-plugin-transform-class-properties": "file:../../node_modules/babel-plugin-transform-class-properties",
+    "babel-plugin-transform-function-bind": "file:../../node_modules/babel-plugin-transform-function-bind",
+    "babel-plugin-transform-object-rest-spread": "file:../../node_modules/babel-plugin-transform-object-rest-spread",
+    "babel-preset-es2015-node5": "file:../../node_modules/babel-preset-es2015-node5",
+    "eslint": "file:../../node_modules/eslint",
+    "eslint-config-mgcrea": "file:../../node_modules/eslint-config-mgcrea"
+  }
+}

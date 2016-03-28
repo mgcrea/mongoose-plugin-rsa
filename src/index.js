@@ -8,21 +8,18 @@ export default function rsaPlugin(schema, {privateKeyField = 'privateKey', publi
     [publicKeyField]: {type: String, required: false}
   });
   // Actually create RSA keys on save
-  schema.pre('save', next => {
-    Promise.bind(this)
-    .then(() => {
-      if (!this.isNew) {
-        return null;
-      }
-      // Generate device certificate
-      return generateFastKeyPairAsync({bits: 2048})
-        .then(({privateKey, publicKey}) => {
-          this[privateKeyField] = pki.privateKeyToPem(privateKey);
-          this[publicKeyField] = pki.publicKeyToPem(publicKey);
-        });
-    })
-    .then(next)
-    .catch(next);
+  schema.pre('save', function preSave(next) {
+    if (!this.isNew) {
+      return null;
+    }
+    // Generate device certificate
+    return generateFastKeyPairAsync({bits: 2048})
+      .then(({privateKey, publicKey}) => {
+        this[privateKeyField] = pki.privateKeyToPem(privateKey);
+        this[publicKeyField] = pki.publicKeyToPem(publicKey);
+      })
+      .then(next)
+      .catch(next);
   });
   // if (options && options.index) {
   //   schema.path('lastMod').index(options.index)

@@ -25,7 +25,7 @@
     "node-forge": "^0.6.39"
   },
   "optionalDependencies": {
-    "ursa": "^0.9.3"
+    "ursa": "^0.9.4"
   },
   "devDependencies": {
     "babel-cli": "file:../../node_modules/babel-cli",

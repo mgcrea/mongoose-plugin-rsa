@@ -28,12 +28,15 @@ export default function rsaPlugin(schema, {privateKeyField = 'privateKey', publi
 
 export function generateFastKeyPairAsync({bits = 2048, exponent = 65537}) {
   try {
-    const keyPair = require('ursa').generatePrivateKey(bits, exponent);
+    // Try to generate an RSA key pair using ursa native fast path
+    const keyPair = require('ursa') // eslint-disable-line
+      .generatePrivateKey(bits, exponent);
     return Promise.resolve({
       privateKey: pki.privateKeyFromPem(keyPair.toPrivatePem().toString()),
       publicKey: pki.publicKeyFromPem(keyPair.toPublicPem().toString())
     });
   } catch (err) {
+    // Fallback to js-only slow path
     return pki.rsa.generateKeyPairAsync({bits, workers: -1});
   }
 }

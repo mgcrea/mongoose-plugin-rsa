@@ -47,10 +47,10 @@ describe('Plugin', () => {
         expect(doc.privateKey).toMatch(/-----END RSA PRIVATE KEY-----\r\n$/);
       });
   });
-  it('should properly support find without results', done => (
+  it('should properly support find without results', () => (
     Model.findOne({name: 'bar'})
   ));
-  it('should properly support update without results', done => (
+  it('should properly support update without results', () => (
     Model.update({name: 'bar'}, {})
   ));
 });

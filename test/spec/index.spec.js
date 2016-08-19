@@ -19,9 +19,9 @@ describe('Plugin', () => {
   it('constructor should export a function', () => {
     expect(encodeKeysPlugin).toBeA('function');
   });
-  it('should properly save one document', done => {
+  it('should properly save one document', () => {
     const orig = {name: 'foo'};
-    Model.create(orig)
+    return Model.create(orig)
       .then(doc => {
         expect(doc.publicKey).toBeA('string');
         expect(doc.publicKey).toMatch(/^-----BEGIN PUBLIC KEY-----/);
@@ -45,18 +45,12 @@ describe('Plugin', () => {
         expect(doc.privateKey).toBeA('string');
         expect(doc.privateKey).toMatch(/^-----BEGIN RSA PRIVATE KEY-----/);
         expect(doc.privateKey).toMatch(/-----END RSA PRIVATE KEY-----\r\n$/);
-      })
-      .then(() => done())
-      .catch(done);
+      });
   });
   it('should properly support find without results', done => (
     Model.findOne({name: 'bar'})
-      .then(() => done())
-      .catch(done)
   ));
   it('should properly support update without results', done => (
     Model.update({name: 'bar'}, {})
-      .then(() => done())
-      .catch(done)
   ));
 });

@@ -31,8 +31,8 @@ export default function rsaPlugin(schema, {privateKeyField = 'privateKey', publi
 export function generateFastKeyPairAsync({bits = 2048, exponent = 65537}) {
   try {
     // Try to generate an RSA key pair using ursa native fast path
-    const keyPair = require('ursa'); // eslint-disable-line
-    keyPair.generatePrivateKey(bits, exponent);
+    const ursa = require('ursa'); // eslint-disable-line
+    const keyPair = ursa.generatePrivateKey(bits, exponent);
     return Promise.resolve({
       privateKey: pki.privateKeyFromPem(keyPair.toPrivatePem().toString()),
       publicKey: pki.publicKeyFromPem(keyPair.toPublicPem().toString())

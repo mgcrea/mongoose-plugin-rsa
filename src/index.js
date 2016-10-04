@@ -3,7 +3,7 @@ import {pki} from 'node-forge';
 
 Promise.promisifyAll(pki.rsa);
 
-export default function rsaPlugin(schema, {privateKeyField = 'privateKey', publicKeyField = 'publicKey'}) {
+export default function rsaPlugin(schema, {privateKeyField = 'privateKey', publicKeyField = 'publicKey'} = {}) {
   // Prepare schema to store keys
   schema.add({
     [privateKeyField]: {type: String, required: false, select: false},

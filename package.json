@@ -14,7 +14,7 @@
     "prepublish": "npm run compile"
   },
   "engines": {
-    "node": "^4.2"
+    "node": "^6"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.4.6",
-    "node-forge": "^0.6.42"
+    "node-forge": "^0.6.43"
   },
   "optionalDependencies": {
     "ursa": "^0.9.4"

@@ -22,7 +22,7 @@ describe('Plugin', () => {
   it('should properly save one document', () => {
     const orig = {name: 'foo'};
     return Model.create(orig)
-      .then(doc => {
+      .then((doc) => {
         expect(doc.publicKey).toBeA('string');
         expect(doc.publicKey).toMatch(/^-----BEGIN PUBLIC KEY-----/);
         expect(doc.publicKey).toMatch(/-----END PUBLIC KEY-----\r\n$/);
@@ -31,14 +31,14 @@ describe('Plugin', () => {
         expect(doc.privateKey).toMatch(/-----END RSA PRIVATE KEY-----\r\n$/);
         return Model.findOne({_id: doc.id});
       })
-      .then(doc => {
+      .then((doc) => {
         expect(doc.publicKey).toBeA('string');
         expect(doc.publicKey).toMatch(/^-----BEGIN PUBLIC KEY-----/);
         expect(doc.publicKey).toMatch(/-----END PUBLIC KEY-----\r\n$/);
         expect(doc.privateKey).toBe(undefined);
         return Model.findOne({_id: doc.id}, '', {select: '+privateKey'});
       })
-      .then(doc => {
+      .then((doc) => {
         expect(doc.publicKey).toBeA('string');
         expect(doc.publicKey).toMatch(/^-----BEGIN PUBLIC KEY-----/);
         expect(doc.publicKey).toMatch(/-----END PUBLIC KEY-----\r\n$/);

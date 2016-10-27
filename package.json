@@ -13,9 +13,6 @@
     "compile:watch": "npm run compile -- -w",
     "prepublish": "npm run compile"
   },
-  "engines": {
-    "node": "^6"
-  },
   "repository": {
     "type": "git",
     "url": "https://gitlab.carlipa.io/carlipa/online.git"

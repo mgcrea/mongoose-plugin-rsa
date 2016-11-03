@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.4.6",
-    "node-forge": "^0.6.44"
+    "node-forge": "^0.6.45"
   },
   "optionalDependencies": {
     "ursa": "^0.9.4"

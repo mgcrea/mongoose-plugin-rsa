@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.4.7",
-    "node-forge": "^0.6.47"
+    "node-forge": "^0.6.48"
   },
   "optionalDependencies": {
     "ursa": "^0.9.4"
@@ -43,7 +43,7 @@
     "eslint": "file:../../node_modules/eslint",
     "mocha": "file:../../node_modules/mocha",
     "nyc": "file:../../node_modules/nyc",
-    "mongoose": "~4.7.7",
+    "mongoose": "~4.7.9",
     "rimraf": "file:../../node_modules/rimraf",
     "supertest-as-promised": "file:../../node_modules/supertest-as-promised",
     "supertest": "file:../../node_modules/supertest"

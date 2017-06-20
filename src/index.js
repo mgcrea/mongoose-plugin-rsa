@@ -28,17 +28,29 @@ export default function rsaPlugin(schema, {privateKeyField = 'privateKey', publi
   // }
 }
 
-export function generateFastKeyPairAsync({bits = 2048, exponent = 65537}) {
-  try {
-    // Try to generate an RSA key pair using ursa native fast path
-    const ursa = require('ursa'); // eslint-disable-line
-    const keyPair = ursa.generatePrivateKey(bits, exponent);
-    return Promise.resolve({
-      privateKey: pki.privateKeyFromPem(keyPair.toPrivatePem().toString()),
-      publicKey: pki.publicKeyFromPem(keyPair.toPublicPem().toString())
+export function generateFastKeyPairAsync({bits = 2048, exponent = 65537, format = 'pki'}) {
+  return Promise.resolve()
+    .then(() => {
+      try {
+        // Try to generate an RSA key pair using ursa native fast path
+        const ursa = require('ursa'); // eslint-disable-line
+        const keyPair = ursa.generatePrivateKey(bits, exponent);
+        return Promise.resolve({
+          privateKey: pki.privateKeyFromPem(keyPair.toPrivatePem().toString()),
+          publicKey: pki.publicKeyFromPem(keyPair.toPublicPem().toString())
+        });
+      } catch (err) {
+        // Fallback to js-only slow path
+        return pki.rsa.generateKeyPairAsync({bits, workers: -1});
+      }
+    })
+    .then((keyPair) => {
+      if (format === 'buffer') {
+        return {
+          privateKey: pki.privateKeyToPem(keyPair.privateKey),
+          publicKey: pki.publicKeyToPem(keyPair.publicKey)
+        };
+      }
+      return keyPair;
     });
-  } catch (err) {
-    // Fallback to js-only slow path
-    return pki.rsa.generateKeyPairAsync({bits, workers: -1});
-  }
 }

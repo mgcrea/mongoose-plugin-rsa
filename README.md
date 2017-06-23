@@ -8,7 +8,7 @@
 [![Codacy Badge_Grade](https://api.codacy.com/project/badge/Grade/99844d4bed38450f9ec9e03650d19954)](https://www.codacy.com/app/olivier_5/mongoose-plugin-rsa?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mgcrea/mongoose-plugin-rsa&amp;utm_campaign=Badge_Grade) [![Codacy Badge_Coverage](https://api.codacy.com/project/badge/Coverage/99844d4bed38450f9ec9e03650d19954)](https://www.codacy.com/app/olivier_5/mongoose-plugin-rsa?utm_source=github.com&utm_medium=referral&utm_content=mgcrea/mongoose-plugin-rsa&utm_campaign=Badge_Coverage)
 [![npm downloads](https://img.shields.io/npm/dm/mongoose-plugin-rsa.svg)](https://www.npmjs.com/package/mongoose-plugin-rsa)
 
-Add support for unsafe chars inside MongoDB field names (like `.` or keys starting with `$`)
+Automatic RSA keyPair generation on document creation.
 
 ## Quickstart
 

@@ -6,6 +6,8 @@ import testSchema from './../fixtures/schema';
 import encodeKeysPlugin from './../../src';
 import pkg from './../../package.json';
 
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
+
 describe('Plugin', () => {
   const mongoUri = process.env.MONGODB_URI || `mongodb://127.0.0.1:27017/test-${pkg.name}`;
   mongoose.set('debug', true);
